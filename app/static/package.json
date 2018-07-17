@@ -1,0 +1,16 @@
+{
+  "name": "mcr",
+  "version": "1.0.0",
+  "description": "mcr global intern challenge 2018",
+  "repository": "team-mcr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "leaflet": "^1.3.1",
+    "leaflet-ajax": "^2.1.0"
+  }
+}
