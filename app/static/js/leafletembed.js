@@ -14,7 +14,26 @@ function initmap()
         },
     });
 
+    var health = L.shapefile("static/data/healthsites.zip", {
+        pointToLayer: function (feature, latlng) {
+           return L.circleMarker(latlng, {radius: 20, fillOpacity: 0.8, fillColor: "#ff0000"}) 
+        },
+        onEachFeature: function(feature, layer) {
+            if (feature.properties) {
+                layer.bindPopup(Object.keys(feature.properties).map(function(k) {
+                    return k + ": " + feature.properties[k];
+                }).join("<br />"), {
+                    maxHeight: 200
+                });
+            }
+        }
+    });
+    var healthCluster = L.markerClusterGroup({chunkedLoading: true});
     var marker = L.markerClusterGroup({chunkedLoading: true, chunkSize: 200});
+    health.on('data:loaded', function(e){
+        healthCluster.addLayer(health);
+        map.addLayer(healthCluster);
+    })
     schools.on('data:loaded', function(e){
         async(function() {marker.addLayer(schools)}, null);
         map.addLayer(marker);
