@@ -183,3 +183,6 @@ venv.bak/
 Pipfile
 *.lock
 *.swp
+
+app/static/data/*.zip
+app/static/data/*/
