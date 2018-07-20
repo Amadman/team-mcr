@@ -1,3 +1,4 @@
 flask==1.0.2
 eventlet
 flask-socketio
+pyshp==1.2.12
