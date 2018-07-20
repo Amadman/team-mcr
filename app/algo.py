@@ -35,8 +35,6 @@ def get_all_schools():
 # Get the next closest point to a given number in a list
 def getClosest(sortedList, num):
     pos = bisect_left(sortedList, num)
-    if pos == 0:
-        return 0
     if pos == len(sortedList):
         return -1
     before = sortedList[pos - 1]
