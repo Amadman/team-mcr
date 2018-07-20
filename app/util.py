@@ -5,7 +5,7 @@ def prune_data(schools):
         [{"admin_id" : ..., "latitude" : ..., "longitude" : ...}, ...]
     """
     features = schools["features"]
-    return [{"admin_id" : s["properties"]["admin_id"],
+    return [{"admin_id" : s["properties"]["name"],
              "latitude" : s["geometry"]["coordinates"][0],
              "longitude" : s["geometry"]["coordinates"][1],
             } for s in features]
