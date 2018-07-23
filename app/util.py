@@ -2,10 +2,10 @@
 def prune_data(schools):
     """Prunes out all data except for id, latitude, and longitude. Returns a
     json list with the following structure:
-        [{"admin_id" : ..., "latitude" : ..., "longitude" : ...}, ...]
+        [{"name" : ..., "latitude" : ..., "longitude" : ...}, ...]
     """
     features = schools["features"]
-    return [{"admin_id" : s["properties"]["name"],
+    return [{"name" : s["properties"]["name"],
              "latitude" : s["geometry"]["coordinates"][0],
              "longitude" : s["geometry"]["coordinates"][1],
             } for s in features]
