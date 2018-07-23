@@ -15,10 +15,9 @@ kilometers = float(sys.argv[1]) / 111.0
 latList = []
 longList = []
 
-with open('static/data/schools.json') as schools_json:
+with open('data.json') as schools_json:
     schools_loaded = json.load(schools_json)
-    pruned_schools = prune_data(schools_loaded)
-    sorted_schools = sort_data(pruned_schools)
+    sorted_schools = schools_loaded
     schools = sorted_schools[0]
     for pos, school in enumerate(schools):
         latList.append(school['latitude'])
@@ -63,6 +62,7 @@ def traverse(coordList, closest, point, increment):
 def get_close_schools(hospital):
     point = hospital.points[0];
     closestLat = getClosest(latList, point[0])
+
     latSetF = traverse(latList, closestLat, point[0], 1);
     latSetB = traverse(latList, closestLat, point[0], -1);
     latSet = latSetF.union(latSetB)
@@ -74,4 +74,4 @@ def get_close_schools(hospital):
 
     return latSet.intersection(longSet)
 
-print(len(get_all_schools()))
+print((get_all_schools()))
