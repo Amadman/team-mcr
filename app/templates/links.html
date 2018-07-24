@@ -9,3 +9,13 @@
 
 <!-- Custom styles for this template -->
 <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet/dist/leaflet.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/MarkerCluster.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css')}}">
+<script src="{{url_for('static', filename='node_modules/leaflet/dist/leaflet.js')}}"></script>
+<script src="{{url_for('static', filename='node_modules/leaflet-ajax/dist/leaflet.ajax.js')}}"></script>
+<script src="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>
+<script src="{{url_for('static', filename='node_modules/shpjs/dist/shp.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/leaflet.shpfile.js')}}"></script>
+<script src="{{url_for('static', filename='js/leafletembed.js')}}"></script>
