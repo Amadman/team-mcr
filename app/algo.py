@@ -1,38 +1,41 @@
-import json
-import shapefile
-import io
-import sys
-from concurrent import futures
+"""Retrieves a set of schools which are within a given range (kilometers) from
+the nearest health site.
+"""
+
 from bisect import bisect_left
+from concurrent import futures
+import io
+import json
+import sys
+
 from util import sort_data, prune_data
 
-if (len(sys.argv) != 2):
-    print ("USAGE: algo.py <kilometers>\n\t - retrieves a set of schools which are within <kilometers> from the nearest health site")
-    sys.exit(0)
+import shapefile
 
+hospitals = None
+lat_list, long_list = [], []
+kilometers = 0
 hospitals = shapefile.Reader("static/data/healthsites/shapefiles/healthsites")
 kilometers = float(sys.argv[1]) / 111.0
-latList = []
-longList = []
 
 with open('data.json') as schools_json:
     schools_loaded = json.load(schools_json)
     sorted_schools = schools_loaded
     schools = sorted_schools[0]
     for pos, school in enumerate(schools):
-        latList.append(school['latitude'])
-        longList.append(school['longitude'])
+        lat_list.append(school['latitude'])
+        long_list.append(school['longitude'])
 
-# Get a set of all schools which are "kilometers" away from a hospital
 def get_all_schools():
+    """Get a set of all schools which are "kilometers" away from a hospital"""
     validSchools = set()
     with futures.ProcessPoolExecutor() as executor:
         for result in executor.map(get_close_schools, hospitals.iterShapes()):
             validSchools = validSchools.union(result)
     return validSchools
 
-# Get the next closest point to a given number in a list
-def getClosest(sortedList, num):
+def get_closest(sortedList, num):
+    """Get the next closest point to a given number in a list"""
     pos = bisect_left(sortedList, num)
     if pos == len(sortedList):
         return -1
@@ -43,9 +46,10 @@ def getClosest(sortedList, num):
     else:
         return pos - 1
 
-# Traverse a list of coordinates (either lat or long)
-# in a given direction and add the valid points to a set
 def traverse(coordList, closest, point, increment):
+    """Traverse a list of coordinates (either lat or long) in a given direction
+    and add the valid points to a set.
+    """
     coordSet = set()
     currentKey = closest
     valid = True
@@ -57,21 +61,32 @@ def traverse(coordList, closest, point, increment):
             valid = False
     return coordSet
 
-# Get the set of schools which are "kilometers" km away
-# laterally and longitudinally
 def get_close_schools(hospital):
+    """Get the set of schools which are "kilometers" km away laterally and
+    longitudinally.
+    """
     point = hospital.points[0];
-    closestLat = getClosest(latList, point[0])
+    closestLat = get_closest(lat_list, point[0])
 
-    latSetF = traverse(latList, closestLat, point[0], 1);
-    latSetB = traverse(latList, closestLat, point[0], -1);
+    latSetF = traverse(lat_list, closestLat, point[0], 1);
+    latSetB = traverse(lat_list, closestLat, point[0], -1);
     latSet = latSetF.union(latSetB)
 
-    closestLong = getClosest(longList, point[1])
-    longSetF = traverse(longList, closestLong, point[1], 1);
-    longSetB = traverse(longList, closestLong, point[1], -1);
+    closestLong = get_closest(long_list, point[1])
+    longSetF = traverse(long_list, closestLong, point[1], 1);
+    longSetB = traverse(long_list, closestLong, point[1], -1);
     longSet = longSetF.union(longSetB)
 
     return latSet.intersection(longSet)
 
-print((get_all_schools()))
+def usage():
+    print("USAGE: algo.py <kilometers>\n" + __doc__)
+
+def main():
+    if len(sys.argv) != 2:
+        usage()
+        sys.exit(1)
+    print(get_all_schools())
+
+if __name__ == "__main__":
+    main()
