@@ -24,15 +24,16 @@
           $("#amount").text(ui.value + "km");
         }
       });
-			$("#slider").on("slidestop", function(event, ui) {
-					endPos = ui.value;
 
-					if (startPos != endPos) {
-            // Amad, put your code here! :)
-					}
+      $("#slider").on("slidestop", function(event, ui) {
+        endPos = ui.value;
 
-					startPos = endPos;
-			});
+        if (startPos != endPos) {
+          socket.emit('update', {data: endPos});
+        }
+
+        startPos = endPos;
+      });
     });
   </script>
 
