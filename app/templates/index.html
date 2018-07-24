@@ -14,8 +14,9 @@
   <div id="amount"></div>
   <script>
     $(function() {
+      startPos = 200;
       $("#slider").slider({
-        value: 200,
+        value: startPos,
         min: 1,
         max: 1000,
         step: 5,
@@ -23,6 +24,15 @@
           $("#amount").text(ui.value + "km");
         }
       });
+			$("#slider").on("slidestop", function(event, ui) {
+					endPos = ui.value;
+
+					if (startPos != endPos) {
+            // Amad, put your code here! :)
+					}
+
+					startPos = endPos;
+			});
     });
   </script>
 
