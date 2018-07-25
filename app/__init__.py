@@ -25,17 +25,6 @@ def setup_webapp():
     log.info("Starting webapp...")
     log.info("No startup tasks required at this early stage.")
 
-@socketio.on('event')
-def on_connect(message):
-  print('received message: {0}'.format(str(message)))
-
-@socketio.on('update')
-def update_x(message):
-  print('update: {0}'.format(str(message)))
-  with open(os.path.join(app.root_path, 'static', 'data', 'new_schools.json')) as f:
-    data = json.load(f)
-  socketio.emit('data', data)
-
 setup_webapp()
 
 from app import routes, errors
