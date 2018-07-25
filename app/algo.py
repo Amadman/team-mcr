@@ -12,7 +12,6 @@ from util import sort_data, prune_data
 
 import shapefile
 
-hospitals = None
 lat_list, long_list = [], []
 kilometers = 0
 hospitals = shapefile.Reader("static/data/healthsites/shapefiles/healthsites")

@@ -22,3 +22,13 @@ def sort_data(pruned_schools):
     by_longitude = sorted(pruned_schools, key=lambda e: e["longitude"])
 
     return (by_latitude, by_longitude)
+
+def frange(start, end, step):
+    """For some dumb reason, the Python range() builtin function doesn't
+    support floating point starts, stops, or steps. So this is my
+    implementation of it.
+    """
+    r = start
+    while r < end:
+        yield r
+        r += step
