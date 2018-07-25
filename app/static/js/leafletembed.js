@@ -67,8 +67,6 @@ function initmap()
             Object.keys(e.enter).forEach(bindFeaturePopup);
             Object.keys(e.enter).forEach(bindMarker);
             Object.keys(e.update).forEach(updateFeaturePopup);
-
-            map.addLayer(marker);
         });
     })
 
