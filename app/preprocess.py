@@ -4,7 +4,7 @@ import json
 import math
 
 import shapefile
-import app.util
+import util
 
 def distance(point_a, point_b):
     """Calculates the approximate distance in KM between two latitude-longitude
