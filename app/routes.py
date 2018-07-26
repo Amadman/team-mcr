@@ -47,6 +47,6 @@ def update_x(message):
     """Called when the slider's value is updated."""
     print("update: {0}".format(str(message)))
     print("Getting the required data...")
-    data = get_range(classes, 0, message['data'])
+    data = get_range(classes, message['data'][0], message['data'][1])
     print("Done! Now sending data...")
     socketio.emit('data', data)
