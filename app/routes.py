@@ -1,6 +1,9 @@
 """Routing functions for Flask."""
 import json
+from json import loads
 import os
+
+from .classes import get_range
 
 from flask import session, render_template, request, url_for, redirect
 from flask_babel import gettext
@@ -40,7 +43,6 @@ def on_connect(message):
 def update_x(message):
     """Called when the slider's value is updated."""
     print('update: {0}'.format(str(message)))
-    with open(os.path.join(app.root_path, 'static', 'data',
-                           'new_schools.json')) as fil:
-        data = json.load(fil)
+    j = loads(open(os.path.join(app.root_path, 'static', 'data', 'classes.json')).read())
+    data = get_range(j, 0, message['data'])
     socketio.emit('data', data)

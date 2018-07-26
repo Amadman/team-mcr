@@ -16,7 +16,9 @@ __version__ = "0.0.1"
 app = Flask(__name__)
 babel = Babel(app)
 app.config.from_object(Config)
-socketio = SocketIO(app)
+socketio = SocketIO(app, logger=False, engineio_logger=False)
+logging.getLogger('socketio').setLevel(logging.ERROR)
+logging.getLogger('engineio').setLevel(logging.ERROR)
 
 # Stop the jinja2 templating from putting in unnecessary whitespace.
 app.jinja_env.trim_blocks = True

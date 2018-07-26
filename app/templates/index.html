@@ -4,7 +4,7 @@
 <div class="starter-template">
   <h1>{{ _('Health Sites in Colombia') }}</h1>
   <p class="lead" style="font-size: 15px;">{{ _('Drag the slider to reveal the schools that lie within a given interval from a health site.') }}</p>
-  <div id="map" style="height: 750px"></div>
+  <div id="map" style="height: 500px"></div>
   <script>
       <!-- var school_file="{{url_for('static', filename='data/schools.json')}}"; -->
       initmap();
@@ -13,12 +13,12 @@
   <div id="amount"></div>
   <script>
     $(function() {
-      startPos = 200;
+      startPos = 0.5;
       $("#slider").slider({
         value: startPos,
-        min: 1,
-        max: 1000,
-        step: 5,
+        min: 0,
+        max: 20,
+        step: 0.1,
         slide: function(e, ui) {
           $("#amount").text(ui.value + "km");
         }

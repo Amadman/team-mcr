@@ -14,7 +14,7 @@ function initmap()
 
     function update(e) {
         console.log("Got an update!")
-        realtime.update(e);
+        realtime.update(JSON.parse(e));
     }
 
     function remove(e) {
@@ -48,11 +48,11 @@ function initmap()
             }).addTo(map);
         map.addLayer(healthCluster);
         realtime.on('update', function(e) {
-
             marker = L.markerClusterGroup({chunkedLoading: true});
             var popupContent = function(fId) {
                 var feature = e.features[fId];
-                return feature.properties.name
+                // return feature.properties.name
+                return "TODO: replace admin_id with name"
             };
             bindFeaturePopup = function(fId) {
                 realtime.getLayer(fId).bindPopup(popupContent(fId));
