@@ -13,6 +13,11 @@ def index():
     """Index page."""
     return render_template("index.html", title=gettext("Home"))
 
+@app.route("/about")
+def about():
+    """About page."""
+    return render_template("about.html", title=gettext("About"))
+
 @app.route("/lang/<language>")
 def lang(language=None):
      session["language"] = language
