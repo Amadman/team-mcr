@@ -2,13 +2,29 @@
 import json
 import os
 
-from flask import render_template
-from app import app, socketio
+from flask import session, render_template, request, url_for, redirect
+from flask_babel import gettext
+
+from app import app, babel, socketio
+from config import LANGUAGES
 
 @app.route("/")
 def index():
     """Index page."""
-    return render_template("index.html", title="Home")
+    return render_template("index.html", title=gettext("Home"))
+
+@app.route("/lang/<language>")
+def lang(language=None):
+     session["language"] = language
+     return redirect(url_for("index"))
+
+@babel.localeselector
+def get_locale():
+    try:
+        language = session['language']
+    except KeyError:
+        language = None
+    return language if language else request.accept_languages.best_match(LANGUAGES.keys())
 
 @socketio.on('event')
 def on_connect(message):

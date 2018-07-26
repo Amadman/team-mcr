@@ -2,9 +2,8 @@
 
 {% block content %}
 <div class="starter-template">
-  <h1>2018 Arm Intern Challenge</h1>
-  <p class="lead">Health Sites in Colombia</p>
-  <p class="lead" style="font-size: 15px;">Drag the slider to reveal the schools that lie within a given interval from a health site.</p>
+  <h1>{{ _('Health Sites in Colombia') }}</h1>
+  <p class="lead" style="font-size: 15px;">{{ _('Drag the slider to reveal the schools that lie within a given interval from a health site.') }}</p>
   <div id="map" style="height: 750px"></div>
   <script>
       <!-- var school_file="{{url_for('static', filename='data/schools.json')}}"; -->

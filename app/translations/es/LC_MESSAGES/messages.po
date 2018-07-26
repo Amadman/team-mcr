@@ -1,0 +1,48 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-07-26 11:09+0100\n"
+"PO-Revision-Date: 2018-07-26 11:49+0100\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+"Last-Translator: \n"
+"X-Generator: Poedit 2.0.9\n"
+
+#: app/routes.py:14 app/templates/base.html:25
+msgid "Home"
+msgstr "Portada"
+
+#: app/templates/base.html:9 app/templates/base.html:17
+msgid "Intern Challenge"
+msgstr "El Reto de Pasantes"
+
+#: app/templates/error.html:8
+msgid "Go Home"
+msgstr "Vuelva a portada"
+
+#: app/templates/index.html:5
+msgid "2018 Arm Intern Challenge"
+msgstr "El Reto de Pasantes de Arm, 2018"
+
+#: app/templates/index.html:6
+msgid "Health Sites in Colombia"
+msgstr "Los Sitios de Sanidad en Colombia"
+
+#: app/templates/index.html:7
+msgid ""
+"Drag the slider to reveal the schools that lie within a given interval "
+"from a health site."
+msgstr ""
+"Arrastre el control deslizante para mostrar los colegios que están "
+"situada dentro de un intervalo desde un sitio de sanidad"

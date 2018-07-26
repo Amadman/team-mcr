@@ -3,6 +3,7 @@ import logging
 import os
 
 from flask import Flask
+from flask_babel import Babel, gettext
 from flask_socketio import SocketIO
 from config import Config
 import json
@@ -13,6 +14,7 @@ log = logging.getLogger(__name__)
 __version__ = "0.0.1"
 
 app = Flask(__name__)
+babel = Babel(app)
 app.config.from_object(Config)
 socketio = SocketIO(app)
 
