@@ -186,3 +186,6 @@ Pipfile
 
 app/static/data/*.zip
 app/static/data/*/
+
+# annoying macOS files
+.DS_Store
