@@ -1,12 +1,13 @@
 from urllib.error import HTTPError
+import json
 import logging
 import os
 
 from flask import Flask
 from flask_babel import Babel, gettext
 from flask_socketio import SocketIO
+
 from config import Config
-import json
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 log = logging.getLogger(__name__)
@@ -31,7 +32,8 @@ def setup_webapp():
 
 setup_webapp()
 
-from app import routes, errors
+from app import routes, errors, util
+app.jinja_env.globals.update(gravatar_url=util.gravatar_url)
 
 if __name__ == '__main__':
   socketio.run(app)

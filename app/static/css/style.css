@@ -12,10 +12,36 @@ h2 {
   text-align: center;
 }
 
+.about-page {
+  padding: 3rem 15rem 0 15rem;
+}
+
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
 
   display: flex;
   align-items: center;
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+.aboutteam {
+  padding: 2rem 5rem 0 5rem;
+}
+
+.teammember-profile {
+  padding: 10px;
+}
+.teammember-name {
+  margin-bottom: -10px;
+}
+
+.meta {
+  padding: 0px 90px 0px 90px;
 }

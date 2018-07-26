@@ -1,5 +1,7 @@
 """Basic utility functions that are used frequently across the webapp."""
 
+from hashlib import md5
+
 def prune_data(schools):
     """Prunes out all data except for id, latitude, and longitude. Returns a
     json list with the following structure:
@@ -33,3 +35,8 @@ def frange(start, end, step):
     while current < end:
         yield current
         current += step
+
+def gravatar_url(email, size):
+    digest = md5(email.lower().encode("utf-8")).hexdigest()
+    return "https://www.gravatar.com/avatar/{}?d=identicon&s={}".format(digest,
+                                                                        size)

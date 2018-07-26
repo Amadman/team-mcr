@@ -1,8 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="starter-template">
-  <h1>{{ _('About') }}</h1>
-  <p>{{_('Hello world!') }}</p>
+<div class="about-page text-left">
+  <h1>{{ _('The Challenge') }}</h1>
+  <p>{{ _('About what we were asked, our interpretation, etc') }}</p>
+  <h1>{{ _('About the Project') }}</h1>
+  <p>{{ _('About the project, what we did to solve it') }}</p>
+  <h1>{{ _('The Team') }}</h1>
+  <div class="jumbotron aboutteam">
+    <div class="row row-eq-height">
+      <div class="col-md-6 text-center">
+        <div class="teammember-profile">
+          <img src="{{ url_for("static", filename="img/amad.jpg") }}" class="img-responsive rounded" style="margin-bottom: 5px;">
+          <p class="teammember-name lead">Amad</p>
+          <a href="mailto:amad.aslam@arm.com" class="small text-muted">amad.aslam@arm.com</a>
+          <div class="meta">
+            <p class="small">{{ _('3rd year Computer Science student at University of Manchester, infrastructure intern') }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="teammember-profile">
+          <img src="{{ url_for("static", filename="img/aymen.jpg") }}" class="img-responsive rounded" style="margin-bottom: 5px;">
+          <p class="teammember-name lead">Aymen</p>
+          <a href="mailto:aymen.qader@arm.com" class="small text-muted">aymen.qader@arm.com</a>
+          <div class="meta">
+            <p class="small">{{ _('2nd year Computer Science student at University of Southampton, performance libraries intern') }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="teammember-profile">
+          <img src="{{ url_for("static", filename="img/joe.jpg") }}" class="img-responsive rounded" style="margin-bottom: 5px;">
+          <p class="teammember-name lead">Joe</p>
+          <a href="mailto:joseph.ellis@arm.com" class="small text-muted">joseph.ellis@arm.com</a>
+          <div class="meta">
+            <p class="small">{{ _('3rd year Computer Science student at University of Birmingham, compilers intern') }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="teammember-profile">
+          <img src="{{ url_for("static", filename="img/zainab.jpg") }}" class="img-responsive rounded" style="margin-bottom: 5px;">
+          <p class="teammember-name lead">Zainab</p>
+          <a href="mailto:zainab.hashmi@arm.com" class="small text-muted">zainab.hashmi@arm.com</a>
+          <div class="meta">
+            <p class="small">{{ _('2nd year Spanish &amp; Arabic student at University of Edinburgh, technical writing intern') }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
