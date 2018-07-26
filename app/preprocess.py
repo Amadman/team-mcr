@@ -21,7 +21,7 @@ def preprocess(increment, hospitals, schools):
     classes = []
     MAX = 250
 
-    for i in app.util.frange(increment, MAX, increment):
+    for i in util.frange(increment, MAX, increment):
         print(i)
         classes.append([i]) # add a new class
         for hospital in hospitals.iterShapes():
@@ -32,7 +32,7 @@ def preprocess(increment, hospitals, schools):
 
                 d = distance(spos, hpos)
                 if d < i and d > i - increment:
-                    classes[-1].append(school)
+                    classes[-1].append(school);
                     schools.remove(school)
                     print(len(schools))
 
@@ -52,7 +52,7 @@ def main():
     args = parser.parse_args()
     hospitals = shapefile.Reader(args.hospitals_file)
     schools = json.loads(args.schools_file.read())
-    schools = app.util.prune_data(schools) # get rid of some cruft
+    schools = util.prune_data(schools) # get rid of some cruft
 
     classes = preprocess(args.increment, hospitals, schools)
     with open("done", "w") as f:
