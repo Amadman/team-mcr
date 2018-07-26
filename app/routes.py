@@ -11,6 +11,9 @@ from flask_babel import gettext
 from app import app, babel, socketio
 from config import LANGUAGES
 
+with open(os.path.join(app.root_path, 'static', 'data', 'classes.json')) as f:
+    classes = loads(f.read())
+
 @app.route("/")
 def index():
     """Index page."""
@@ -42,7 +45,8 @@ def on_connect(message):
 @socketio.on('update')
 def update_x(message):
     """Called when the slider's value is updated."""
-    print('update: {0}'.format(str(message)))
-    j = loads(open(os.path.join(app.root_path, 'static', 'data', 'classes.json')).read())
-    data = get_range(j, 0, message['data'])
+    print("update: {0}".format(str(message)))
+    print("Getting the required data...")
+    data = get_range(classes, 0, message['data'])
+    print("Done! Now sending data...")
     socketio.emit('data', data)
