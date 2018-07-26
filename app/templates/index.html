@@ -1,23 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet/dist/leaflet.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/MarkerCluster.css')}}">
-<link rel="stylesheet" href="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css')}}">
-<script src="{{url_for('static', filename='node_modules/leaflet/dist/leaflet.js')}}"></script>
-<script src="{{url_for('static', filename='node_modules/leaflet-ajax/dist/leaflet.ajax.js')}}"></script>
-<script src="{{url_for('static', filename='node_modules/leaflet.markercluster/dist/leaflet.markercluster.js')}}"></script>
-<script src="{{url_for('static', filename='node_modules/shpjs/dist/shp.min.js')}}"></script>
-<script src="{{url_for('static', filename='js/leaflet.shpfile.js')}}"></script>
-<script src="{{url_for('static', filename='js/leafletembed.js')}}"></script>
 <div class="starter-template">
-    <h1>2018 Arm Intern Challenge</h1>
-    <p class="lead">Let's smash it lads</p>
-    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg active" role="button">:)</a>
-    <div id="map" style="height: 400px"></div>
-    <script>
-        <!-- var school_file="{{url_for('static', filename='data/schools.json')}}"; -->
-        initmap();
-    </script>
+  <h1>2018 Arm Intern Challenge</h1>
+  <p class="lead">Let's smash it lads</p>
+  <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg active" role="button">:)</a>
+  <div id="map" style="height: 400px"></div>
+  <script>
+      <!-- var school_file="{{url_for('static', filename='data/schools.json')}}"; -->
+      initmap();
+  </script>
+  <div id="slider"></div>
+  <div id="amount"></div>
+  <script>
+    $(function() {
+      startPos = 200;
+      $("#slider").slider({
+        value: startPos,
+        min: 1,
+        max: 1000,
+        step: 5,
+        slide: function(e, ui) {
+          $("#amount").text(ui.value + "km");
+        }
+      });
+
+      $("#slider").on("slidestop", function(event, ui) {
+        endPos = ui.value;
+
+        if (startPos != endPos) {
+          socket.emit('update', {data: endPos});
+        }
+
+        startPos = endPos;
+      });
+    });
+  </script>
+
 </div>
 {% endblock %}
