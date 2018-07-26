@@ -8,13 +8,13 @@ function initmap()
     var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
     var osm = L.tileLayer(osmUrl, {minZoom: 1, maxZoom: 22, attribution: osmAttrib});
-    var realtime;
 
     var latLng = L.latLng(4.624, -74.063)
 
     function update(e) {
         console.log("Got an update!")
-        realtime.update(JSON.parse(e));
+        updateSchools(JSON.parse(e));
+        // realtime.update(JSON.parse(e));
     }
 
     function remove(e) {
@@ -36,40 +36,27 @@ function initmap()
         }
     });
 
-    var healthCluster = L.markerClusterGroup({chunkedLoading: true});
-    var marker = L.markerClusterGroup({chunkedLoading: true, chunkSize: 200});
+    var healthCluster = new L.markerClusterGroup({chunkedLoading: true});
+
+    var schoolCluster = new PruneClusterForLeaflet();
     health.on('data:loaded', function(e){
         healthCluster.addLayer(health);
-        map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]}),
-            realtime = L.realtime(undefined, {
-                container: marker,
-                getFeatureId: function(f) { return f.geometry.coordinates[0]+f.geometry.coordinates[1]; },
-                start: false
-            }).addTo(map);
+        map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]});
         map.addLayer(healthCluster);
-        realtime.on('update', function(e) {
-            marker = L.markerClusterGroup({chunkedLoading: true});
-            var popupContent = function(fId) {
-                var feature = e.features[fId];
-                // return feature.properties.name
-                return "TODO: replace admin_id with name"
-            };
-            bindFeaturePopup = function(fId) {
-                realtime.getLayer(fId).bindPopup(popupContent(fId));
-            },
-                updateFeaturePopup = function(fId) {
-                    realtime.getLayer(fId).getPopup().setContent(popupContent(fId));
-                },
-                bindMarker = function(fId) {
-                    marker.addLayer(realtime.getLayer(fId));
-                };
-
-            Object.keys(e.enter).forEach(bindFeaturePopup);
-            Object.keys(e.enter).forEach(bindMarker);
-            Object.keys(e.update).forEach(updateFeaturePopup);
-        });
     })
 
+    var updateSchools = function(e){
+        schoolCluster.RemoveMarkers();
+        var addMarker = function(fId)
+        {
+            var geometry = e.features[fId].geometry;
+            var marker = new PruneCluster.Marker(geometry.coordinates[1], geometry.coordinates[0]);
+            schoolCluster.RegisterMarker(marker)
+        }
+        Object.keys(e.features).forEach(addMarker)
+        schoolCluster.ProcessView();
+        map.addLayer(schoolCluster);
+    }
 
     /*
     var schools = L.geoJSON.ajax("static/data/schools.json",{
