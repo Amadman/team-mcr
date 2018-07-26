@@ -4,14 +4,14 @@ import json
 import math
 
 import shapefile
-import util
+import app.util
 
-def distance(a, b):
+def distance(point_a, point_b):
     """Calculates the approximate distance in KM between two latitude-longitude
     coordinates a and b.
     """
-    latitude_delta = a[0] - b[0]
-    longitude_delta = a[1] - b[1]
+    latitude_delta = point_a[0] - point_b[0]
+    longitude_delta = point_a[1] - point_b[1]
     return math.sqrt((latitude_delta ** 2 + longitude_delta ** 2) * 111)
 
 def preprocess(increment, hospitals, schools):
@@ -21,7 +21,7 @@ def preprocess(increment, hospitals, schools):
     classes = []
     MAX = 250
 
-    for i in util.frange(increment, MAX, increment):
+    for i in app.util.frange(increment, MAX, increment):
         print(i)
         classes.append([i]) # add a new class
         for hospital in hospitals.iterShapes():
@@ -39,6 +39,7 @@ def preprocess(increment, hospitals, schools):
     return classes
 
 def main():
+    """Parse command line arguments."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--increment", "-i", metavar="km", type=float, default=1,
                         help="The span/size of each class.")
@@ -51,7 +52,7 @@ def main():
     args = parser.parse_args()
     hospitals = shapefile.Reader(args.hospitals_file)
     schools = json.loads(args.schools_file.read())
-    schools = util.prune_data(schools) # get rid of some cruft
+    schools = app.util.prune_data(schools) # get rid of some cruft
 
     classes = preprocess(args.increment, hospitals, schools)
     with open("done", "w") as f:

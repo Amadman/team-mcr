@@ -2,8 +2,8 @@
 import json
 import os
 
-from app import app, socketio
 from flask import render_template
+from app import app, socketio
 
 @app.route("/")
 def index():
@@ -12,11 +12,14 @@ def index():
 
 @socketio.on('event')
 def on_connect(message):
-  print('received message: {0}'.format(str(message)))
+    """Called when the user connects to the websocket."""
+    print('received message: {0}'.format(str(message)))
 
 @socketio.on('update')
 def update_x(message):
-  print('update: {0}'.format(str(message)))
-  with open(os.path.join(app.root_path, 'static', 'data', 'new_schools.json')) as f:
-    data = json.load(f)
-  socketio.emit('data', data)
+    """Called when the slider's value is updated."""
+    print('update: {0}'.format(str(message)))
+    with open(os.path.join(app.root_path, 'static', 'data',
+                           'new_schools.json')) as fil:
+        data = json.load(fil)
+    socketio.emit('data', data)

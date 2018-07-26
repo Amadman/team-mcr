@@ -1,3 +1,4 @@
+"""Basic utility functions that are used frequently across the webapp."""
 
 def prune_data(schools):
     """Prunes out all data except for id, latitude, and longitude. Returns a
@@ -28,7 +29,7 @@ def frange(start, end, step):
     support floating point starts, stops, or steps. So this is my
     implementation of it.
     """
-    r = start
-    while r < end:
-        yield r
-        r += step
+    current = start
+    while current < end:
+        yield current
+        current += step

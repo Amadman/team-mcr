@@ -2,15 +2,17 @@
 preprocess.py.
 """
 
-# [[...], [2.5, {}, {}, ...], ...]
-
 def get_range(classes, lower, upper):
-    # NAIVE APPROACH CURRENTLY, maybe implement binary search if this is too
-    # slow.
+    """Given a classes json object, get_range returns a subset of the schools
+    which lie within a distance interval [lower, upper] kilometers from the
+    nearest health center.
+    """
     schools = []
     for classs in classes:
-        if classs[0] <= lower: continue
-        elif classs[0] > upper: break
+        if classs[0] <= lower:
+            continue
+        elif classs[0] > upper:
+            break
         schools.extend(classs[1:])
 
     return schools
