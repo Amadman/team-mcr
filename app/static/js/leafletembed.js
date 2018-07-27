@@ -11,8 +11,13 @@ function initmap()
 
     var latLng = L.latLng(4.624, -74.063)
 
+    var healthIcon = new L.Icon({
+      iconUrl: 'static/data/RedCrossBig.png',
+      iconSize: [32, 32],
+      iconAnchor: [16, 0]
+    });
+
     function update(e) {
-        console.log(e);
         updateSchools(JSON.parse(e));
     }
 
@@ -22,6 +27,7 @@ function initmap()
 
     var health = L.shapefile("static/data/healthsites.zip", {
         pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {icon: healthIcon});
             return L.circleMarker(latlng, {radius: 20, fillOpacity: 0.8, fillColor: "#ff0000"})
         },
         onEachFeature: function(feature, layer) {
@@ -44,7 +50,6 @@ function initmap()
         schoolCluster.RemoveMarkers();
         var addMarker = function(fId)
         {
-            console.log(e.features[fId]);
             var geometry = e.features[fId].geometry;
             var marker = new PruneCluster.Marker(geometry.coordinates[1], geometry.coordinates[0]);
             marker.data.popup = e.features[fId].name;
