@@ -16,8 +16,12 @@ wget $WGET_OPTIONS $HEALTH_SITES -O healthsites.zip
 echo "Done!"
 
 echo "Inflating zipfiles..."
+mkdir colombia_shapefile
 unzip $UNZIP_OPTIONS colombia_shapefile.zip -d colombia_shapefile
+mkdir colombia_roads_polygons
 unzip $UNZIP_OPTIONS colombia_roads_polygons.zip -d colombia_roads_polygons
+mkdir colombia_roads_lines
 unzip $UNZIP_OPTIONS colombia_roads_lines.zip -d colombia_roads_lines
+mkdir healthsites
 unzip $UNZIP_OPTIONS healthsites.zip -d healthsites
 echo "Done!"

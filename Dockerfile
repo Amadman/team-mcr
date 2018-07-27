@@ -19,5 +19,5 @@ ENV FLASK_APP mcr.py
 RUN chown -R mcr:mcr ./
 USER mcr
 
-EXPOSE 5000
+EXPOSE 80
 ENTRYPOINT ["./boot.sh"]
