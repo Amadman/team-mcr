@@ -36,7 +36,7 @@
 						<ul class="navbar-nav ml-auto">
                 {% macro language_nav_item(language) %}
                 <li class="nav-item {% if session['language'] == language %} active {% endif %}">
-                    <a class="nav-link" href="{{ url_for('lang', language=language) }}">{{ language|upper }}</a>
+                    <a class="nav-link" href="{{ url_for('lang', language=language) }}">{{ language|upper }}<span class="flag-icon flag-icon-{% if language == 'en'%}gb{% else %}{{language}}{% endif %}"></span></a>
                 </li>
                 {% endmacro %}
                 {{ language_nav_item('en') }}

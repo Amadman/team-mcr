@@ -10,28 +10,29 @@
       initmap();
   </script>
   <br>
-  <div id="slider"></div>
+  <div id="slider" class="slider"></div>
   <div id="amount"></div>
   <script>
     $(function() {
-      startPos = 0.5;
+      startPos = [0,0.5];
+      $("#amount").text(startPos[0] + " - " + startPos[1] + " km");
       $("#slider").slider({
         range: true,
-        value: startPos,
+        values: startPos,
         min: 0,
         max: 20,
         step: 0.01,
         slide: function(e, ui) {
-          $("#amount").text(ui.values[0] + "-" + ui.values[1] + "km");
+          $("#amount").text(ui.values[0] + " - " + ui.values[1] + " km");
         }
       });
 
+      socket.emit('update', {data: startPos});
       $("#slider").on("slidestop", function(event, ui) {
-        startPos = ui.values[0];
-        endPos = ui.values[1];
+        endPos = ui.values;
 
-        if (startPos != endPos) {
-          socket.emit('update', {data: [startPos, endPos]});
+        if ((startPos[0] != endPos[0]) || (startPos[1] != endPos[1])) {
+            socket.emit('update', {data: endPos});
         }
 
         startPos = endPos;
