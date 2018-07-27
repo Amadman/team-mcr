@@ -147,6 +147,13 @@ msgstr ""
 "La desviación estándar de la distancia desde los colegios al sitio de "
 "sanidad más cerca es"
 
+#: app/templates/index.html:49
+msgid ""
+"Furthest schools from health facilities"
+msgstr ""
+"Las escuelas más alejadas de los centros de salud"
+
+
 #~ msgid "2018 Arm Intern Challenge"
 #~ msgstr "El Reto de Pasantes de Arm, 2018"
 
