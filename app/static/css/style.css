@@ -48,6 +48,18 @@ h2 {
   padding: 0px 55px 0px 55px;
 }
 
+.social-links {
+  margin-top: -12px;
+}
+
+.social-links a {
+  color: #444444;
+}
+
+.social-links a:hover {
+  color: #555;
+}
+
 .slider.ui-corner-all,
 .slider .ui-corner-all {
   border-radius: 0;
