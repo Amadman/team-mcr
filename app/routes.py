@@ -10,7 +10,7 @@ from config import LANGUAGES
 
 from .classes import get_range
 from .statistics import get_mean_distance, get_modal_distance, \
-                        get_distance_stdev
+                        get_distance_stdev, get_furthest_schools
 
 
 with open(os.path.join(app.root_path, 'static', 'data', 'classes.json')) as f:
@@ -22,7 +22,8 @@ def index():
     return render_template("index.html", title=gettext("Home"),
                            mean_distance=get_mean_distance(classes),
                            modal_distance=get_modal_distance(classes),
-                           distance_stdev=get_distance_stdev(classes))
+                           distance_stdev=get_distance_stdev(classes),
+                           furthest_schools=get_furthest_schools(classes, 10))
 
 @app.route("/about")
 def about():
