@@ -11,11 +11,14 @@ To run the server, you have two choices:
 To do this, you will need to set up a Python virtualenv. There are a number of tools available to do this. I prefer
 `pipenv`, but plain old `virtualenv` will work just fine too.
 
-Install whichever virtualenv tool you prefer, set up a virtualenv in the repo directory, and activate it. Then, type:
+Install whichever virtualenv tool you prefer, set up a virtualenv in the repo directory, and activate it. Then, run:
 
-`pip install -r requirements.txt`
+`./install.sh`
 
-to install the dependencies. Next, we have to tell Flask where the app is by setting the `FLASK_APP` environment variable. To do this:
+This will use pip to install all Python dependencies, npm to install all JavaScript dependencies, wget to download data packages, and unzip to extract them.
+NOTE: Please ensure pip, wget, and unzip are installed before running this script.
+
+Next, we have to tell Flask where the app is by setting the `FLASK_APP` environment variable. To do this:
 
 `export FLASK_APP=$(pwd)/mcr.py`
 
