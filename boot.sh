@@ -6,4 +6,4 @@ cd data
 ./pulldata.sh
 cd ../../..
 
-flask run -h 0.0.0.0 -p 80
+flask run -h 0.0.0.0 -p 8080
