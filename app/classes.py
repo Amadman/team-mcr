@@ -9,12 +9,14 @@ def convert_geojson(data):
         "features": [
             {
                 "type": "Feature",
+                "name": d["name"],
                 "geometry" : {
                     "type": "Point",
                     "coordinates": [d["latitude"], d["longitude"]],
                 },
             } for d in data]
     }
+    print(data[1])
     geojson_dump = json.dumps(geojson)
     return json.dumps(geojson);
 
