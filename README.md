@@ -1,6 +1,10 @@
 # team-mcr
 Team mcr's project for the "arm Intern Innovation Challenge"
 
+This project is a web application that visualizes schools and health facilities in Colombia. The user is able to input values for 'min' and 'max' range to show all schools that are within that range of a health facility. Clicking any marker on the map shows that point's name.
+
+In the top right corner of the web application the user can find a language selection. To enable further collaboration between those working to help Colombia and those living in Colombia the current languages of choice are 'English' and 'Spanish'.
+
 # running the server
 To run the server, you have two choices:
 
