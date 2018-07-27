@@ -12,8 +12,10 @@ h2 {
   text-align: center;
 }
 
-.about-page {
-  padding: 3rem 15rem 0 15rem;
+.about-template {
+  width: auto;
+  max-width: 1250px;
+  padding: 3rem 1.5rem;
 }
 
 .vertical-center {

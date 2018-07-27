@@ -43,7 +43,8 @@
   <div class="jumbotron text-left">
     <h3>Statistics</h3>
     <ul>
-      <li>The modal distance class is {{ modal_distance }}km. In other words, the average distance of a school from a health centre is approximately {{ modal_distance }}km.</li>
+      <li>The mean distance from a school to the nearest health centre is <strong>{{ '%0.2f' % mean_distance|float }}km</strong>.</li>
+      <li>The modal distance class is <strong>{{ modal_distance }}km</strong>.</li>
     </ul>
   </div>
 
