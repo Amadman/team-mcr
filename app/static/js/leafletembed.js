@@ -12,7 +12,7 @@ function initmap()
     var latLng = L.latLng(4.624, -74.063)
 
     var healthIcon = new L.Icon({
-      iconUrl: 'static/data/RedCrossBig.png',
+      iconUrl: 'static/data/RedCross.png',
       iconSize: [32, 32],
       iconAnchor: [16, 0]
     });
@@ -25,10 +25,11 @@ function initmap()
         realtime.remove(JSON.parse(e.data));
     }
 
+    var healthCluster = L.markerClusterGroup({chunkedLoading: true});
+
     var health = L.shapefile("static/data/healthsites.zip", {
         pointToLayer: function (feature, latlng) {
             return L.marker(latlng, {icon: healthIcon});
-            return L.circleMarker(latlng, {radius: 20, fillOpacity: 0.8, fillColor: "#ff0000"})
         },
         onEachFeature: function(feature, layer) {
             if (feature.properties) {
@@ -36,9 +37,11 @@ function initmap()
             }
         }
     });
-
-    map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]});
-    map.addLayer(health);
+    health.on('data:loaded', function(e){
+        healthCluster.addLayer(health);
+        map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]});
+        map.addLayer(healthCluster);
+    })
 
     var schoolCluster = new PruneClusterForLeaflet();
 
