@@ -8,4 +8,4 @@ from app import app
 def page_not_found(err):
     """Returns a rendered error page that displays details about the error."""
     flash("{}: {}".format(err.code, err.description))
-    return render_template("index.html"), err.code
+    return render_template("error.html"), err.code
