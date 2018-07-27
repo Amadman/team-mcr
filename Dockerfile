@@ -7,7 +7,7 @@ WORKDIR /home/mcr
 COPY requirements.txt requirements.txt
 RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt
-RUN venv/bin/pip install npm
+RUN apk add --update nodejs nodejs-npm
 
 COPY app app
 COPY mcr.py config.py boot.sh ./

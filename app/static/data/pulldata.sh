@@ -5,8 +5,8 @@ COLOMBIA_ROADS_L=http://export.hotosm.org/downloads/36bc1e36-f6a4-4e33-a8b6-5c1b
 COLOMBIA_ROADS_P=http://export.hotosm.org/downloads/36bc1e36-f6a4-4e33-a8b6-5c1b81b98ae5/hotosm_col_roads_polygons_shp.zip
 HEALTH_SITES=https://data.humdata.org/dataset/4ca96139-21c0-456d-9624-45e6474dd3ea/resource/9f451cd6-2669-4a0b-b5bb-2d5bd82228c2/download/colombia-shapefiles.zip
 
-WGET_OPTIONS="-q --show-progress -c"
-UNZIP_OPTIONS="-q -u -o"
+WGET_OPTIONS="-q -c"
+UNZIP_OPTIONS="-q -o"
 
 echo "Downloading data..."
 wget $WGET_OPTIONS $COLOMBIA_SHAPEFILE -O colombia_shapefile.zip
