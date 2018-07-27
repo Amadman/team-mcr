@@ -11,7 +11,7 @@ To run the server, you have two choices:
 To do this, you will need to set up a Python virtualenv. There are a number of tools available to do this. I prefer
 `pipenv`, but plain old `virtualenv` will work just fine too.
 
-Install whichever virtualenv tool you prefer, set up a virtualenv in the repo directory, and activate it. Then, run:
+Install whichever virtualenv tool you prefer, set up a virtualenv in the repo directory, and activate it. Navigate to the root of the repo then run:
 
 `./install.sh`
 
