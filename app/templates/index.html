@@ -41,10 +41,11 @@
   </script>
 
   <div class="jumbotron text-left">
-    <h3>Statistics</h3>
+    <h3>General Statistics</h3>
     <ul>
-      <li>The mean distance from a school to the nearest health centre is <strong>{{ '%0.2f' % mean_distance|float }}km</strong>.</li>
-      <li>The modal distance class is <strong>{{ modal_distance }}km</strong>.</li>
+      <li>{{ _('The mean distance from a school to the nearest health centre is') }} <strong>{{ '%.2f'|format(mean_distance|float) }}km</strong>.</li>
+      <li>{{ _('The modal distance class is') }} <strong>{{ modal_distance }}km</strong>.</li>
+      <li>{{ _('The standard deviation of the distance from the schools to the nearest health centre is') }} <strong>{{ '%.2f'|format(distance_stdev|float) }}km</strong>.</li>
     </ul>
   </div>
 
