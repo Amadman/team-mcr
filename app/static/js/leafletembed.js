@@ -12,9 +12,8 @@ function initmap()
     var latLng = L.latLng(4.624, -74.063)
 
     function update(e) {
-        console.log("Got an update!")
+        console.log(e);
         updateSchools(JSON.parse(e));
-        // realtime.update(JSON.parse(e));
     }
 
     function remove(e) {
@@ -27,11 +26,7 @@ function initmap()
         },
         onEachFeature: function(feature, layer) {
             if (feature.properties) {
-                layer.bindPopup(Object.keys(feature.properties).map(function(k) {
-                    return k + ": " + feature.properties[k];
-                }).join("<br />"), {
-                    maxHeight: 200
-                });
+                layer.bindPopup(feature.properties['name']);
             }
         }
     });
@@ -49,28 +44,16 @@ function initmap()
         schoolCluster.RemoveMarkers();
         var addMarker = function(fId)
         {
+            console.log(e.features[fId]);
             var geometry = e.features[fId].geometry;
             var marker = new PruneCluster.Marker(geometry.coordinates[1], geometry.coordinates[0]);
-            schoolCluster.RegisterMarker(marker)
+            marker.data.popup = e.features[fId].name;
+            schoolCluster.RegisterMarker(marker);
         }
         Object.keys(e.features).forEach(addMarker)
         schoolCluster.ProcessView();
         map.addLayer(schoolCluster);
     }
-
-    /*
-    var schools = L.geoJSON.ajax("static/data/schools.json",{
-        onEachFeature: function(feature, layer) {
-            layer.bindPopup(feature.properties.name);
-        },
-    });
-
-    var marker = L.markerClusterGroup({chunkedLoading: true});
-    schools.on('data:loaded', function(e){
-        async(function() {marker.addLayer(schools)}, null);
-        map.addLayer(marker);
-    });
-    */
 
     socket.on('connect', function() {
         socket.emit('event', {data: 'Connected!'});

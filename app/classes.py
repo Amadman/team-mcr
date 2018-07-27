@@ -9,14 +9,17 @@ def convert_geojson(data):
         "features": [
             {
                 "type": "Feature",
+                "name": d["name"],
                 "geometry" : {
                     "type": "Point",
                     "coordinates": [d["latitude"], d["longitude"]],
                 },
             } for d in data]
     }
+    print(data[1])
     geojson_dump = json.dumps(geojson)
     return json.dumps(geojson);
+
 def get_range(classes, lower, upper):
     """Given a classes json object, get_range returns a subset of the schools
     which lie within a distance interval [lower, upper] kilometers from the
