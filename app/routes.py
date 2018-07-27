@@ -4,6 +4,7 @@ from json import loads
 import os
 
 from .classes import get_range
+from .statistics import get_modal_distance
 
 from flask import session, render_template, request, url_for, redirect
 from flask_babel import gettext
@@ -17,7 +18,8 @@ with open(os.path.join(app.root_path, 'static', 'data', 'classes.json')) as f:
 @app.route("/")
 def index():
     """Index page."""
-    return render_template("index.html", title=gettext("Home"))
+    return render_template("index.html", title=gettext("Home"),
+                           modal_distance=get_modal_distance(classes))
 
 @app.route("/about")
 def about():

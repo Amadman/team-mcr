@@ -37,6 +37,9 @@ def frange(start, end, step):
         current += step
 
 def gravatar_url(email, size):
+    """Given an email and a size, gets the url to a gravatar profile
+    picture.
+    """
     digest = md5(email.lower().encode("utf-8")).hexdigest()
     return "https://www.gravatar.com/avatar/{}?d=identicon&s={}".format(digest,
                                                                         size)
