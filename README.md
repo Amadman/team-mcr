@@ -38,3 +38,8 @@ To do this, make sure you have Docker installed and run the following command fr
 
 This uses the repo's Dockerfile to build a new docker container and runs it, mapping port 5000 on the container to
 port 5000 on the host. Again, if you visit 127.0.0.1:5000 in your browser, you should see the page.
+
+# running tests
+To run tests, make sure you are in the root directory of the project and run the following command:
+
+`python -m unittest discover -v`
