@@ -37,14 +37,10 @@ function initmap()
         }
     });
 
-    var healthCluster = new L.markerClusterGroup({chunkedLoading: true});
+    map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]});
+    map.addLayer(health);
 
     var schoolCluster = new PruneClusterForLeaflet();
-    health.on('data:loaded', function(e){
-        healthCluster.addLayer(health);
-        map = L.map('map', {center: latLng, zoom: 13, maxZoom: 22, layers: [osm]});
-        map.addLayer(healthCluster);
-    })
 
     var updateSchools = function(e){
         schoolCluster.RemoveMarkers();

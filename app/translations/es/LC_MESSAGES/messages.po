@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-07-27 13:57+0100\n"
-"PO-Revision-Date: 2018-07-27 14:00+0100\n"
+"POT-Creation-Date: 2018-07-27 15:36+0100\n"
+"PO-Revision-Date: 2018-07-27 15:36+0100\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: es <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr "Portada"
 
 #: app/routes.py:30
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: app/templates/about.html:6
 msgid "The Challenge"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: app/templates/about.html:9
 msgid "About the Project"
-msgstr ""
+msgstr "Acerca del Proyecto"
 
 #: app/templates/about.html:10
 msgid ""
@@ -46,11 +46,11 @@ msgstr ""
 
 #: app/templates/about.html:11
 msgid ""
-"A very high proportion of the urban population live in slum and slum-"
-"like condtitions, increasing the risk of danger."
+"A very high proportion of the urban population live in slum and slum-like "
+"condtitions, increasing the risk of danger."
 msgstr ""
-"Una proporción muy alta de la población urbana vive en las barriadas o "
-"en condiciones semejantes, que incrementa el riesgo del peligro."
+"Una proporción muy alta de la población urbana vive en las barriadas o en "
+"condiciones semejantes, que incrementa el riesgo del peligro."
 
 #: app/templates/about.html:12
 msgid ""
@@ -68,36 +68,44 @@ msgid ""
 "Use it to see all schools that are a chosen distance away from health "
 "facilities."
 msgstr ""
-"Utilízelo para ver todos los colegios que son una distancia elegida "
-"desde los sitios de sanidad."
+"Utilízelo para ver todos los colegios que son una distancia elegida desde "
+"los sitios de sanidad."
 
 #: app/templates/about.html:15
 msgid "The Team"
-msgstr ""
+msgstr "El Equipo"
 
 #: app/templates/about.html:24
 msgid ""
 "3rd year Computer Science student at University of Manchester, "
 "infrastructure intern"
 msgstr ""
+"Estudiante de informática de 3 año en la Universidad de Manchester, "
+"pasante de infraestructura"
 
-#: app/templates/about.html:34
+#: app/templates/about.html:39
 msgid ""
 "2nd year Computer Science student at University of Southampton, "
 "performance libraries intern"
 msgstr ""
+"Estudiante de informática de 2 año en la Universidad de Southampton, "
+"pasante de bibliotecas de rendimiento"
 
-#: app/templates/about.html:44
+#: app/templates/about.html:54
 msgid ""
 "3rd year Computer Science student at University of Birmingham, compilers "
 "intern"
 msgstr ""
+"Estudiante de informática de 3 año en la Universidad de Birmingham, "
+"pasante de compiladores"
 
-#: app/templates/about.html:54
+#: app/templates/about.html:70
 msgid ""
 "2nd year Spanish &amp; Arabic student at University of Edinburgh, "
 "technical writing intern"
 msgstr ""
+"Estudiante del arabé y español de 2 año en la Universidad de Edimburgo, "
+"pasante de escritura técnica"
 
 #: app/templates/base.html:10 app/templates/base.html:31
 msgid "Intern Challenge"
@@ -116,22 +124,28 @@ msgid ""
 "Drag the slider to reveal the schools that lie within a given interval "
 "from a health site."
 msgstr ""
-"Arrastre el control deslizante para mostrar los colegios que están "
-"situada dentro de un intervalo desde un sitio de sanidad."
+"Arrastre el control deslizante para mostrar los colegios que están situada "
+"dentro de un intervalo desde un sitio de sanidad."
+
+#: app/templates/index.html:44
+msgid "General Statistics"
+msgstr "Estadísticos Generales"
 
 #: app/templates/index.html:46
 msgid "The mean distance from a school to the nearest health centre is"
-msgstr ""
+msgstr "La distancia media desde un colegio al sitio de sanidad más cerca es"
 
 #: app/templates/index.html:47
 msgid "The modal distance class is"
-msgstr ""
+msgstr "La clase de distancia modal es"
 
 #: app/templates/index.html:48
 msgid ""
 "The standard deviation of the distance from the schools to the nearest "
 "health centre is"
 msgstr ""
+"La desviación estándar de la distancia desde los colegios al sitio de "
+"sanidad más cerca es"
 
 #~ msgid "2018 Arm Intern Challenge"
 #~ msgstr "El Reto de Pasantes de Arm, 2018"
