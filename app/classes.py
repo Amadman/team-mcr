@@ -16,7 +16,6 @@ def convert_geojson(data):
                 },
             } for d in data]
     }
-    print(data[1])
     geojson_dump = json.dumps(geojson)
     return json.dumps(geojson);
 
