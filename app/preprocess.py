@@ -23,7 +23,7 @@ def preprocess(increment, hospitals, schools):
 
     for i in util.frange(increment, MAX, increment):
         print(i)
-        classes.append([i]) # add a new class
+        classes.append([i])
         for hospital in hospitals.iterShapes():
             for school in schools:
                 point = hospital.points[0]
@@ -31,8 +31,8 @@ def preprocess(increment, hospitals, schools):
                 spos = (school["latitude"], school["longitude"])
 
                 d = distance(spos, hpos)
-                if d < i and d > i - increment:
-                    classes[-1].append(school);
+                if (d < i) and (d > i - increment):
+                    classes[-1].append(school)
                     schools.remove(school)
                     print(len(schools))
 

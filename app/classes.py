@@ -4,6 +4,9 @@ preprocess.py.
 """
 
 def convert_geojson(data):
+    """Given data of schools, convert_geojson converts into GeoJSON
+    format.
+    """
     geojson = {
         "type": "FeatureCollection",
         "features": [
@@ -16,8 +19,7 @@ def convert_geojson(data):
                 },
             } for d in data]
     }
-    geojson_dump = json.dumps(geojson)
-    return json.dumps(geojson);
+    return json.dumps(geojson)
 
 def get_range(classes, lower, upper):
     """Given a classes json object, get_range returns a subset of the schools

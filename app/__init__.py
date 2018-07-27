@@ -33,7 +33,8 @@ def setup_webapp():
 setup_webapp()
 
 from app import routes, errors, util
+
 app.jinja_env.globals.update(gravatar_url=util.gravatar_url)
 
 if __name__ == '__main__':
-  socketio.run(app)
+    socketio.run(app)
